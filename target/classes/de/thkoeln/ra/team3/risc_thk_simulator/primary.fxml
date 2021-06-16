@@ -21,7 +21,7 @@
                <items>
                 <AnchorPane maxHeight="1199.0" maxWidth="1200.0" minHeight="0.0" minWidth="0.0" prefHeight="1106.0" prefWidth="1195.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Button layoutX="206.0" layoutY="12.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Execute" />
+                        <Button layoutX="206.0" layoutY="12.0" mnemonicParsing="false" onAction="#execute" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Execute" />
                         <Button layoutX="398.0" layoutY="12.0" mnemonicParsing="false" onAction="#restart" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Restart" />
                         <Button layoutX="588.0" layoutY="12.0" mnemonicParsing="false" onAction="#executeInstruction" prefHeight="32.0" prefWidth="165.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Step" />
                         <ChoiceBox layoutX="962.0" layoutY="15.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #000000;" />

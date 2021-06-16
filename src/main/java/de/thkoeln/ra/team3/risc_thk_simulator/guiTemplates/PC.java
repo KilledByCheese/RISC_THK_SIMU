@@ -9,7 +9,7 @@ public class PC {
 	private Label str;
 	private Label pc;
 	
-	public PC(int pc) {
+	public PC(long pc) {
 		this.str = new Label("PC:");
 		this.pc = new Label(""+pc);
 		

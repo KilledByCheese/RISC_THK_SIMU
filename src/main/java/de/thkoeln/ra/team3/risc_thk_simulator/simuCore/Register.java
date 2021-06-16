@@ -44,7 +44,7 @@ public class Register {
 	}
 
 	private String regToBinary(int addr) {
-		String value = Integer.toBinaryString(reg[addr]);
+		String value = Long.toBinaryString(reg[addr]);
 		while(value.length() != 32) {
 			value = "0"+value;
 		}

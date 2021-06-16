@@ -8,6 +8,8 @@ import de.thkoeln.ra.team3.risc_thk_simulator.simuCore.Memory;
 import de.thkoeln.ra.team3.risc_thk_simulator.simuCore.Register;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
@@ -40,10 +42,7 @@ public class PrimaryController {
 		
 		memory = new Memory();
 		register = new Register();
-		
-		
-		
-			
+					
 	}
 
     public void updateRegister() {
@@ -73,9 +72,13 @@ public class PrimaryController {
     private void chooseFile(Event event) throws IOException {
     	File rscFile = fc.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
     	if(rscFile == null) return;
+    	register = new Register();
+    	memory = new Memory();
+    	updateRegister();
     	if(!memory.init(rscFile)) {
     		System.out.println("Error reading file");
-    	} else {
+    	} else {  
+    		codeArea.getChildren().clear();
     		for(int i = 0; i < memory.getInitMemSize(); i++) {
     			System.out.println(memory.readMem(i));
     			String addr = Integer.toHexString(i);
@@ -88,6 +91,20 @@ public class PrimaryController {
     		
     	}
     }
+	
+	@FXML
+	private void execute() { //TODO find out when a program is ended to run till this point
+		
+		for (int i = 0; i < 100; i++) {
+			executeInstruction();
+			System.out.println();
+		}
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Completed");
+		alert.setHeaderText(null);
+		alert.setContentText("100 Steps Completed!");
+		alert.showAndWait();
+	}
     
     @FXML
     private void executeInstruction() { //one step
@@ -129,7 +146,7 @@ public class PrimaryController {
 		default:            nop();
 			break;
 		}
-    	System.out.println("PC: " + register.getPc());    	
+    	//System.out.println("PC: " + register.getPc());    	
     	updateRegister();
     }
     
@@ -147,7 +164,7 @@ public class PrimaryController {
 	}
 
 	private void ret() {
-		register.setPc(register.readReg(31));		
+		register.setPc((int) register.readReg(31));		
 	}
 
 	private void call() {
