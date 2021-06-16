@@ -25,7 +25,7 @@ public class Memory {
 		return memContent[addr];
 	}
 	
-	public void writeMem(int addr, int value) {
+	public void writeMem(int addr, long value) {
 		memContent[addr] = value;
 	}
 	

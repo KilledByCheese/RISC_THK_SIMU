@@ -97,7 +97,7 @@ public class PrimaryController {
 		
 		for (int i = 0; i < 100; i++) {
 			executeInstruction();
-			System.out.println();
+			System.out.println(register.readReg(2));
 		}
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Completed");
@@ -180,7 +180,7 @@ public class PrimaryController {
 	}
 
 	private void stg() {
-		memory.writeMem(register.readReg(instruction.getR1()) + instruction.getOffset(), register.readReg(instruction.getR2()));
+		memory.writeMem((register.readReg(instruction.getR1()) + instruction.getOffset()), register.readReg(instruction.getR2()));
     }
 
 	private void adc() {
@@ -188,7 +188,7 @@ public class PrimaryController {
 	}
 
 	private void load() {
-		register.writeReg(instruction.getRd(), (int)memory.readMem(register.readReg(instruction.getR1()) + instruction.getOffset()));
+		register.writeReg(instruction.getRd(), (int)memory.readMem((register.readReg(instruction.getR1()) + instruction.getOffset())));
     }
 
 	private void slt() {
