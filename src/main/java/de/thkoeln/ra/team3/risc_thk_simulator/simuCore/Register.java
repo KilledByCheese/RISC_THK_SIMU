@@ -1,13 +1,16 @@
 package de.thkoeln.ra.team3.risc_thk_simulator.simuCore;
 
 public class Register {
-
+	public static final int REGSIZE = 32;
 	private int[] reg;
 	private int pc;
 	
 	public Register() {
-		reg = new int[32];
+		reg = new int[REGSIZE];
 		pc = 0;
+		for (int i = 0; i < reg.length; i++) {
+			reg[i] = 0;
+		}
 	}
 	
 	public void writeReg(int addr, int value) {

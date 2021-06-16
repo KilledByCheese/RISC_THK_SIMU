@@ -8,8 +8,11 @@ import de.thkoeln.ra.team3.risc_thk_simulator.simuCore.Memory;
 import de.thkoeln.ra.team3.risc_thk_simulator.simuCore.Register;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.event.Event;
 
@@ -17,6 +20,9 @@ public class PrimaryController {
 	
 	@FXML
 	VBox codeArea;
+	
+	@FXML
+	VBox regArea;
 	
 	private static final int pcStep = 1;
 	
@@ -34,9 +40,36 @@ public class PrimaryController {
 		
 		memory = new Memory();
 		register = new Register();
+		
+		
+		
+			
 	}
 
-    @FXML
+    public void updateRegister() {
+    	regArea.getChildren().clear();
+    	regArea.getChildren().add(new PC(register.getPc()).buildHBox());
+    	for (int i = 0; i < Register.REGSIZE; i++) {
+			RegisterEntry tmp = new RegisterEntry(i, register.readReg(i));
+			
+			if((i % 2) == 0) {
+				tmp.getAddress().setStyle("-fx-background-color: #5a89ce");
+				tmp.getAddress().setTextFill(Color.web("#ffffff"));
+				tmp.getValue().setStyle("-fx-background-color: #5a89ce");
+				tmp.getValue().setTextFill(Color.web("#ffffff"));
+				
+			} else {
+				tmp.getAddress().setStyle("-fx-background-color: #d1b5f2");
+				tmp.getAddress().setTextFill(Color.web("#000000"));
+				tmp.getValue().setStyle("-fx-background-color: #d1b5f2");
+				tmp.getValue().setTextFill(Color.web("#000000"));
+			}	
+			HBox entry = tmp.buildHBox();
+			regArea.getChildren().add(entry);
+		}
+	}
+
+	@FXML
     private void chooseFile(Event event) throws IOException {
     	File rscFile = fc.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
     	if(rscFile == null) return;
@@ -52,6 +85,7 @@ public class PrimaryController {
     			InstructionEntry entry = new InstructionEntry(addr, new Instruction(memory.readMem(i)));
     			codeArea.getChildren().add(entry.buildHBox());
     		}
+    		
     	}
     }
     
@@ -95,8 +129,8 @@ public class PrimaryController {
 		default:            nop();
 			break;
 		}
-    	System.out.println("PC: " + register.getPc());
-    	System.out.println(register.toString());
+    	System.out.println("PC: " + register.getPc());    	
+    	updateRegister();
     }
     
     @FXML

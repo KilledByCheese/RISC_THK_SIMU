@@ -16,13 +16,15 @@ import de.thkoeln.ra.team3.risc_thk_simulator.guiTemplates.PrimaryController;
 public class App extends Application {
 
     private static Scene scene;
-
+    private static PrimaryController controller;
+    
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 1160, 720);
         
         stage.setScene(scene);
         stage.show();
+        controller.updateRegister();
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -31,7 +33,8 @@ public class App extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        fxmlLoader.setController(new PrimaryController());
+        controller = new PrimaryController();
+        fxmlLoader.setController(controller);
         return fxmlLoader.load();
     }
 
