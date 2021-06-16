@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<ScrollPane xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1150.0">
+         <children>
+            <SplitPane orientation="VERTICAL" prefHeight="1101.0" prefWidth="1185.0">
+               <items>
+                <AnchorPane maxHeight="1199.0" maxWidth="1200.0" minHeight="0.0" minWidth="0.0" prefHeight="1106.0" prefWidth="1195.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Button layoutX="206.0" layoutY="12.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Execute" />
+                        <Button layoutX="398.0" layoutY="12.0" mnemonicParsing="false" onAction="#restart" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Restart" />
+                        <Button layoutX="588.0" layoutY="12.0" mnemonicParsing="false" onAction="#executeInstruction" prefHeight="32.0" prefWidth="165.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Step" />
+                        <ChoiceBox layoutX="962.0" layoutY="15.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #000000;" />
+                        <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#chooseFile" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Browse File" textFill="#e8c183" />
+                        <ListView layoutX="14.0" layoutY="61.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <ListView layoutX="14.0" layoutY="91.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <ListView layoutX="14.0" layoutY="121.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <ListView layoutX="14.0" layoutY="151.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <ListView layoutX="14.0" layoutY="181.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Button layoutX="764.0" layoutY="12.0" mnemonicParsing="false" onAction="#runToNextBreakpoint" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #000000; -fx-text-fill: #e4a67a; -fx-background-radius: 4px;" text="Go to Breakpoint" />
+                        <ListView layoutX="14.0" layoutY="211.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <ListView layoutX="14.0" layoutY="241.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <ListView layoutX="14.0" layoutY="271.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <ListView layoutX="14.0" layoutY="301.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <ListView layoutX="14.0" layoutY="331.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <ListView layoutX="14.0" layoutY="361.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <ListView layoutX="14.0" layoutY="391.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <ListView layoutX="14.0" layoutY="421.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <ListView layoutX="14.0" layoutY="451.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="67.0" style="-fx-text-fill: #ffffff;" text="reg00" />
+                        <Label layoutX="22.0" layoutY="127.0" style="-fx-text-fill: #ffffff;" text="reg02" />
+                        <Label layoutX="22.0" layoutY="187.0" style="-fx-text-fill: #ffffff;" text="reg04" />
+                        <Label layoutX="22.0" layoutY="247.0" style="-fx-text-fill: #ffffff;" text="reg06" />
+                        <Label layoutX="22.0" layoutY="307.0" style="-fx-text-fill: #ffffff;" text="reg08" />
+                        <Label layoutX="22.0" layoutY="367.0" style="-fx-text-fill: #ffffff;" text="reg10" />
+                        <Label layoutX="22.0" layoutY="427.0" style="-fx-text-fill: #c61181;" text="reg12" />
+                        <Label layoutX="22.0" layoutY="97.0" style="-fx-text-fill: #c61181;" text="reg01" />
+                        <Label layoutX="22.0" layoutY="157.0" style="-fx-text-fill: #000000;" text="reg03" />
+                        <Label layoutX="22.0" layoutY="217.0" style="-fx-text-fill: #000000;" text="reg05" />
+                        <Label layoutX="22.0" layoutY="277.0" style="-fx-text-fill: #000000;" text="reg07" />
+                        <Label layoutX="22.0" layoutY="337.0" style="-fx-text-fill: #000000;" text="reg09" />
+                        <Label layoutX="22.0" layoutY="397.0" style="-fx-text-fill: #000000;" text="reg11" />
+                        <Label layoutX="22.0" layoutY="457.0" style="-fx-text-fill: #000000;" text="reg13" />
+                        <ListView layoutX="14.0" layoutY="481.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="22.0" layoutY="487.0" style="-fx-text-fill: #ffffff;" text="reg14" />
+                        <ListView layoutX="14.0" layoutY="511.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="517.0" style="-fx-text-fill: #000000;" text="reg15" />
+                        <ListView layoutX="14.0" layoutY="541.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="23.0" layoutY="547.0" style="-fx-text-fill: #ffffff;" text="reg16" />
+                        <ListView layoutX="14.0" layoutY="571.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="577.0" style="-fx-text-fill: #000000;" text="reg17" />
+                        <ListView layoutX="14.0" layoutY="601.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="23.0" layoutY="607.0" style="-fx-text-fill: #ffffff;" text="reg18" />
+                        <ListView layoutX="14.0" layoutY="631.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="637.0" style="-fx-text-fill: #000000;" text="reg19" />
+                        <ListView layoutX="14.0" layoutY="661.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="23.0" layoutY="667.0" style="-fx-text-fill: #ffffff;" text="reg20" />
+                        <ListView layoutX="14.0" layoutY="691.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="697.0" style="-fx-text-fill: #000000;" text="reg21" />
+                        <ListView layoutX="14.0" layoutY="721.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="23.0" layoutY="727.0" style="-fx-text-fill: #ffffff;" text="reg22" />
+                        <ListView layoutX="14.0" layoutY="751.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="757.0" style="-fx-text-fill: #000000;" text="reg23" />
+                        <ListView layoutX="14.0" layoutY="781.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="23.0" layoutY="787.0" style="-fx-text-fill: #ffffff;" text="reg24" />
+                        <ListView layoutX="14.0" layoutY="811.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="817.0" style="-fx-text-fill: #000000;" text="reg25" />
+                        <ListView layoutX="14.0" layoutY="841.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="23.0" layoutY="847.0" style="-fx-text-fill: #ffffff;" text="reg26" />
+                        <ListView layoutX="14.0" layoutY="871.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="877.0" style="-fx-text-fill: #000000;" text="reg27" />
+                        <ListView layoutX="14.0" layoutY="901.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="23.0" layoutY="907.0" style="-fx-text-fill: #ffffff;" text="reg28" />
+                        <ListView layoutX="14.0" layoutY="931.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="937.0" style="-fx-text-fill: #000000;" text="reg29" />
+                        <ListView layoutX="14.0" layoutY="961.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="23.0" layoutY="967.0" style="-fx-text-fill: #ffffff;" text="reg30" />
+                        <ListView layoutX="14.0" layoutY="991.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="22.0" layoutY="997.0" style="-fx-text-fill: #000000;" text="reg31" />
+                        <ListView layoutX="79.0" layoutY="61.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="67.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="91.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="97.0" style="-fx-text-fill: #c61181;" text="0xFFFFFFFF" />
+                        <ListView layoutX="79.0" layoutY="121.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="127.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="14.0" layoutY="1021.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #000000;" />
+                        <Label layoutX="24.0" layoutY="1027.0" style="-fx-text-fill: #e4a67a;" text="PC" />
+                        <ListView layoutX="14.0" layoutY="1051.0" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #e4a67a;" />
+                        <Label layoutX="24.0" layoutY="1057.0" style="-fx-text-fill: #000000;" text="IR" />
+                        <ListView layoutX="79.0" layoutY="151.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="157.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="181.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="187.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="211.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="217.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="241.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="247.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="271.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="277.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="301.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="307.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="331.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="337.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="361.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="367.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="391.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="397.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="421.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="427.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #c61181;" text="0x00000037" />
+                        <ListView layoutX="79.0" layoutY="451.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="457.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="481.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="487.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="511.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="517.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="541.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="547.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="571.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="577.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="601.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="607.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="631.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="637.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="661.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="667.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="691.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="697.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="721.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="727.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="751.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="757.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="781.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="787.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="811.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="817.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="841.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="847.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="871.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="877.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="901.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="907.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="931.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="937.0" style="-fx-text-fill: #000000;" text="0x00000014" />
+                        <ListView layoutX="79.0" layoutY="961.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #5a89ce;" />
+                        <Label layoutX="87.0" layoutY="967.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #ffffff;" text="0x00001C00" />
+                        <ListView layoutX="79.0" layoutY="991.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #d1b5f2;" />
+                        <Label layoutX="87.0" layoutY="997.0" style="-fx-text-fill: #000000;" text="0x00000000" />
+                        <ListView layoutX="79.0" layoutY="1021.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #000000;" />
+                        <Label layoutX="89.0" layoutY="1027.0" style="-fx-text-fill: #e4a67a;" text="0x0000000C" />
+                        <ListView layoutX="79.0" layoutY="1051.0" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #e4a67a;" />
+                        <Label layoutX="89.0" layoutY="1057.0" style="-fx-text-fill: #000000;" text="0x00000029" />
+                        <Pane layoutX="297.0" layoutY="61.0" prefHeight="1011.0" prefWidth="562.0" style="-fx-background-color: #262328;">
+                           <children>
+                              <VBox fx:id="codeArea" prefHeight="200.0" prefWidth="100.0" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="877.0" layoutY="61.0" prefHeight="1011.0" prefWidth="255.0" style="-fx-background-color: #e4a67a;">
+                           <children>
+                              <TextField layoutX="60.0" layoutY="27.0" prefHeight="25.0" prefWidth="135.0" />
+                              <Label layoutX="6.0" layoutY="6.0" text="Show memory area from address:" />
+                              <ListView layoutY="60.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="66.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000000" />
+                              <ListView layoutX="120.0" layoutY="60.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="66.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="90.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="96.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000001" />
+                              <ListView layoutX="120.0" layoutY="90.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="96.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="119.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="125.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000002" />
+                              <ListView layoutX="120.0" layoutY="119.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="125.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="149.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="155.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000003" />
+                              <ListView layoutX="120.0" layoutY="149.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="155.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="179.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="185.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000004" />
+                              <ListView layoutX="120.0" layoutY="179.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="185.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="209.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="215.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000005" />
+                              <ListView layoutX="120.0" layoutY="209.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="215.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="238.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="244.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000006" />
+                              <ListView layoutX="120.0" layoutY="238.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="244.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="268.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="274.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000007" />
+                              <ListView layoutX="120.0" layoutY="268.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="274.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="298.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="304.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000008" />
+                              <ListView layoutX="120.0" layoutY="298.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="304.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="328.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="334.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000009" />
+                              <ListView layoutX="120.0" layoutY="328.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="334.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="357.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="363.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000000A" />
+                              <ListView layoutX="120.0" layoutY="357.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="363.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="387.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="393.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000000B" />
+                              <ListView layoutX="120.0" layoutY="387.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="393.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="417.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="423.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000000C" />
+                              <ListView layoutX="120.0" layoutY="417.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="423.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="447.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="453.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000000D" />
+                              <ListView layoutX="120.0" layoutY="447.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="453.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="476.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="482.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000000E" />
+                              <ListView layoutX="120.0" layoutY="476.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="482.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="506.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="512.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000000F" />
+                              <ListView layoutX="120.0" layoutY="506.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="512.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="536.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="542.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000010" />
+                              <ListView layoutX="120.0" layoutY="536.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="542.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="566.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="572.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000011" />
+                              <ListView layoutX="120.0" layoutY="566.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="572.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="595.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="601.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000012" />
+                              <ListView layoutX="120.0" layoutY="595.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="601.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="625.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="631.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000013" />
+                              <ListView layoutX="120.0" layoutY="625.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="631.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="655.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="661.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000014" />
+                              <ListView layoutX="120.0" layoutY="655.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="661.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000037" />
+                              <ListView layoutY="685.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="691.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000015" />
+                              <ListView layoutX="120.0" layoutY="685.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="691.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="714.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="720.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000016" />
+                              <ListView layoutX="120.0" layoutY="714.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="720.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="744.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="750.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000017" />
+                              <ListView layoutX="120.0" layoutY="744.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="750.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="774.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="780.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000018" />
+                              <ListView layoutX="120.0" layoutY="774.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="780.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="804.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="810.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x00000019" />
+                              <ListView layoutX="120.0" layoutY="804.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="810.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="833.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="839.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000001A" />
+                              <ListView layoutX="120.0" layoutY="833.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="839.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="863.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="869.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000001B" />
+                              <ListView layoutX="120.0" layoutY="863.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="869.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="893.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="899.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000001C" />
+                              <ListView layoutX="120.0" layoutY="893.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="899.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="923.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="929.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000001D" />
+                              <ListView layoutX="120.0" layoutY="923.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="929.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="952.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="958.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000001E" />
+                              <ListView layoutX="120.0" layoutY="952.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="958.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <ListView layoutY="982.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+                              <Label layoutX="8.0" layoutY="988.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #262328;" text="0x0000001F" />
+                              <ListView layoutX="120.0" layoutY="982.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+                              <Label layoutX="128.0" layoutY="988.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+                              <Button layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-text-fill: #e4a67a; -fx-background-radius: 4px; -fx-background-color: #262328;" text="+32" />
+                              <Button layoutX="196.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-text-fill: #e4a67a; -fx-background-radius: 4px; -fx-background-color: #262328;" text="-32" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </HBox>
+   </content>
+</ScrollPane>
