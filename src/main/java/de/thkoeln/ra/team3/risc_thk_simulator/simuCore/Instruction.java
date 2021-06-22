@@ -2,14 +2,14 @@ package de.thkoeln.ra.team3.risc_thk_simulator.simuCore;
 
 public class Instruction {
 
-	private long ir;
+	private int ir;
 	private int opc;
 	private int r1;
 	private int r2;
 	private int rd;
 	private int offset;
 
-	public Instruction(long instruction) {
+	public Instruction(int instruction) {
 		this.ir = instruction;
 		opc = (int) instruction & 0x3F;
 		instruction = instruction >>> 6;
@@ -31,7 +31,7 @@ public class Instruction {
 		}
 	}
 
-	public long getIr() {
+	public int getIr() {
 		return ir;
 	}
 

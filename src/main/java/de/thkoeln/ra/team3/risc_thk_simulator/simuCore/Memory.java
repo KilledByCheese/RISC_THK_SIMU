@@ -8,7 +8,7 @@ import de.thkoeln.ra.team3.risc_thk_simulator.util.MyReader;
 
 public class Memory {
 
-	private long[] memContent;
+	private int[] memContent;
 	private static final int MEMSIZE = 65536;
 	private int initMemSize;
 	
@@ -17,15 +17,15 @@ public class Memory {
 	}
 	
 	private void resetMemory() {
-		memContent = new long[MEMSIZE];
+		memContent = new int[MEMSIZE];
 		initMemSize = 0;
 	}
 	
-	public long readMem(int addr) {
+	public int readMem(int addr) {
 		return memContent[addr];
 	}
 	
-	public void writeMem(int addr, long value) {
+	public void writeMem(int addr, int value) {
 		memContent[addr] = value;
 	}
 	
@@ -34,7 +34,16 @@ public class Memory {
 			resetMemory();
 			List<String> instructions = MyReader.readFileIntoList(file);
 			for (int i = 0; i < instructions.size(); i++) {
-				memContent[i] = Long.parseLong(instructions.get(i),2);
+				//java's weirdness with parsing full sized ints
+				long parse_tmp = Long.parseLong(instructions.get(i),2);
+				
+				memContent[i] = (int)(0xFFFFFFFF & parse_tmp);
+				/*if((memContent[i]&(~0xFFFFFFFF)) != 0) {
+					System.err.println("OH NOES!!");
+					System.err.println(instructions.get(i));
+					System.err.println(parse_tmp);
+					System.err.println(memContent[i]);
+				}*/
 			}
 			initMemSize = instructions.size();
 		} catch (IOException e) {

@@ -22,7 +22,7 @@ public class InstructionEntry {
 		} memAddr = "0x"+memAddr;
 		breakpoint = new CheckBox(memAddr);
 		
-		String irHex = Long.toHexString(instruction.getIr());
+		String irHex = Integer.toHexString(instruction.getIr());
 		while(irHex.length() != 8) {
 			irHex = "0"+irHex;
 		}

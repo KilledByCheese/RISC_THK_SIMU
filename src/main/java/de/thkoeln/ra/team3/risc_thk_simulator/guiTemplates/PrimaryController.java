@@ -15,10 +15,19 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 
 public class PrimaryController {
@@ -29,10 +38,23 @@ public class PrimaryController {
 	@FXML
 	VBox regArea;
 	
+	@FXML
+	Pane memoryArea;
+	
+	@FXML
+	TextField viewAddress;
+	
+	Label addrLabels[];
+	Label contLabels[];
+	
+	int viewerOffset = 0;
+	
+	
 	Set<Integer> breakpoints;
 	
 	private static final int DEFAULT_STEP_INCREMENT = 1;
 	private int lastUpdatedRegister = -1;
+	private int lastUpdatedMemoryLocation = -1;
 	
 	private FileChooser fc;
 	private Memory memory;
@@ -50,6 +72,7 @@ public class PrimaryController {
 		register = new Register();
 		
 		breakpoints = new HashSet<Integer>();
+		
 	}
 
     public void updateRegister() {
@@ -92,6 +115,7 @@ public class PrimaryController {
     		System.out.println("Error reading file");
     	} else {  
     		buildCodeArea();    		
+    		updateMemoryView();
     	}
     }
 
@@ -111,6 +135,7 @@ public class PrimaryController {
 		for (int i = 0; i < 100; i++) {
 			executeInstruction();			
 		}
+		updateMemoryView();
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Completed");
 		alert.setHeaderText(null);
@@ -118,8 +143,29 @@ public class PrimaryController {
 		alert.showAndWait();
 	}
     
+	@FXML
+	private void offsetKeyPressed(KeyEvent ke){
+		if(ke.getCode() == KeyCode.ENTER) {
+			String str = viewAddress.getText();
+			int offset_new;
+			try {
+				if(str.charAt(0) == '0' && Character.toLowerCase(str.charAt(1)) == 'x' ) {
+					offset_new = Integer.parseInt(str.substring(2), 16);
+				}else {
+					offset_new = Integer.parseInt(str, 16);
+				}
+			}catch(NumberFormatException nfe) {
+				System.out.println("pls no");
+				offset_new = viewerOffset;
+			}
+			viewNewAddress(offset_new);
+		}
+	}
+	
     @FXML
     private void executeInstruction() { //one step
+    	lastUpdatedMemoryLocation = -1;
+    	
 //    	System.out.println("PC: "+register.getPc());
     	register.step(DEFAULT_STEP_INCREMENT); //increment PC by 1    	
     	if(register.getPc() > memory.getInitMemSize()) {
@@ -170,6 +216,7 @@ public class PrimaryController {
 		}
     	//System.out.println("PC: " + register.getPc());    	
     	updateRegister();
+    	updateLastWord();
     }
     
     @FXML
@@ -187,7 +234,7 @@ public class PrimaryController {
     		alert.showAndWait();
     		return;
     	}
-    	int pc = register.getPc();
+    	/*int pc = register.getPc();
     	List<Integer> sortedList = new ArrayList<>(breakpoints);
     	Collections.sort(sortedList);
     	int nextBreakpoint = -1;
@@ -207,8 +254,10 @@ public class PrimaryController {
     		nextBreakpoint = sortedList.get(0);
     	}
     	System.out.println("next breakpoint: " + nextBreakpoint);
+    	*/
     	int runCounter = 0;
-    	while(register.getPc() != nextBreakpoint+1) {
+    	//while(register.getPc() != nextBreakpoint+1) {
+    	do {
     		executeInstruction();
     		runCounter++;
     		if(runCounter>100) {
@@ -219,9 +268,21 @@ public class PrimaryController {
         		alert.showAndWait();
     			break;
     		}
-    	}
+    	}while(!breakpoints.contains(register.getPc()));
+    	updateMemoryView();
+    	
     }
 
+    @FXML
+    private void addressInc32() {
+    	viewNewAddress(viewerOffset + 32);
+    }
+    
+    @FXML
+    private void addressDec32() {
+    	viewNewAddress(viewerOffset - 32);
+    }
+    
 	private void nop() {
 		//No Operation		
 	}
@@ -244,7 +305,9 @@ public class PrimaryController {
 	}
 
 	private void stg() {
-		memory.writeMem((register.readReg(instruction.getR1()) + instruction.getOffset()), register.readReg(instruction.getR2()));
+		int addr = (register.readReg(instruction.getR1()) + instruction.getOffset());
+		memory.writeMem(addr, register.readReg(instruction.getR2()));
+		lastUpdatedMemoryLocation = addr;
     }
 
 	private void adc() {
@@ -295,5 +358,65 @@ public class PrimaryController {
 	private void add() {
 		lastUpdatedRegister = instruction.getRd();
 		register.writeReg(instruction.getRd(), register.readReg(instruction.getR1()) + register.readReg(instruction.getR2()));		
+	}
+
+	public void genMemoryView() {
+		addrLabels = new Label[32];
+		contLabels = new Label[32];
+		
+		
+		for( int i = 0; i < 32; i++) {
+			Label label_new;
+			label_new = new Label("offset: " + Integer.toHexString(i));
+			label_new.setLayoutX(8.0);
+			label_new.setLayoutY(66 + i*28);
+			label_new.setPrefHeight(18);
+			label_new.setPrefWidth(92);
+			label_new.setStyle("-fx-text-fill: #262328;-fx-background-color: #e4a67a;");
+			addrLabels[i] = label_new;
+			memoryArea.getChildren().add(label_new);
+
+			
+			
+			
+			label_new = new Label("memory at: " + Integer.toHexString(i));
+			label_new.setLayoutX(128.0);
+			label_new.setLayoutY(66 + i*28);
+			label_new.setPrefHeight(18);
+			label_new.setPrefWidth(110);
+			label_new.setStyle("-fx-text-fill: #e4a67a;-fx-background-color: #262328;");
+			contLabels[i] = label_new;
+			memoryArea.getChildren().add(label_new);
+			
+			/*<ListView layoutX="120.0" layoutY="60.0" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #262328;" />
+            <Label layoutX="128.0" layoutY="66.0" prefHeight="18.0" prefWidth="110.0" style="-fx-text-fill: #e4a67a;" text="0x00000000" />
+            <ListView layoutY="90.0" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #e4a67a;" />
+            */
+		}
+		
+		viewAddress.setText(String.format("0x%08x", viewerOffset));
+		updateMemoryView();
+		
+	}
+	private void updateMemoryView() {
+		int addr;
+		for(int i = 0; i < 32; i++) {
+			addr = viewerOffset + i;
+			addrLabels[i].setText(String.format("0x%08x", addr));
+			contLabels[i].setText(String.format("0x%08x", memory.readMem(addr)));
+		}
+	}
+	private void updateLastWord() {
+		int addr = lastUpdatedMemoryLocation;
+		if(addr >= viewerOffset && addr < viewerOffset+32)
+			contLabels[addr-viewerOffset].setText(String.format("0x%08x", memory.readMem(addr)));
+	}
+	private void viewNewAddress(int offset_new) {
+		if(offset_new < 0) {
+			offset_new = 0;
+		}
+		viewerOffset = offset_new;
+		viewAddress.setText(String.format("0x%08x", viewerOffset));
+		updateMemoryView();
 	}
 }
